@@ -7,11 +7,11 @@ function App() {
   return (
       <div className="App">
         {/* accordian component */}
-        <Accordian/>
+        {/* <Accordian/> */}
         {/* random color generator */}
-        <RandomColor/>
+        {/* <RandomColor/> */}
         {/* start rating system */}
-        <StarRating numStars={5}/>
+        <StarRating numStars={10}/>
 
       </div>
   )

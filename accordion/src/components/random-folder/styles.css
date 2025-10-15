@@ -4,6 +4,12 @@
     height: 100vh;
 }
 
+.button-row {
+  display: flex;          /* arrange buttons in a row */
+  justify-content: center; /* center row horizontally */
+  gap: 5px;              /* space between buttons */
+}
+
 .color-generated{
                 display:flex;
                 justify-content:center;

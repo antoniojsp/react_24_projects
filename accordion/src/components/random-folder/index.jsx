@@ -20,9 +20,9 @@ export default function RandomColor() {
         setColor(newColor);
     }
 
-    useEffect(() =>
-        generateNewColor()
-    ,[typeOfColor])
+    useEffect(() =>{
+        generateNewColor();
+    }, [typeOfColor])
 
     return (
         <div className="container"
@@ -31,9 +31,11 @@ export default function RandomColor() {
                     background: color,
                 }
             }>
-            <button onClick={() => setTypeOfColor('hex')}>Create Hex Color</button>
-            <button onClick={() => setTypeOfColor('rgb')}>Create RGB Color</button>
-            <button onClick={generateNewColor}>Generate Random Color</button>
+            <div className="button-row">
+                <button onClick={() => setTypeOfColor('hex')}>Create Hex Color</button>
+                <button onClick={() => setTypeOfColor('rgb')}>Create RGB Color</button>
+                <button onClick={generateNewColor}>Generate Random Color</button>
+            </div>
             <div className="color-generated">
                 <h3>{typeOfColor === "rgb"? "RGB Color":"Hex Color"}</h3>
                 <h1>{color}</h1>
