@@ -5,15 +5,15 @@ import StarRating from "./components/star-rating"
 function App() {
 
   return (
-      <div className="App">
-        {/* accordian component */}
-        {/* <Accordian/> */}
-        {/* random color generator */}
-        {/* <RandomColor/> */}
-        {/* start rating system */}
-        <StarRating numStars={10}/>
+    <div className="App">
+      {/* accordian component */}
+      <Accordian />
+      {/* random color generator */}
+      <RandomColor />
+      {/* start rating system */}
+      <StarRating numStars={10} />
 
-      </div>
+    </div>
   )
 }
 

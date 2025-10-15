@@ -1,0 +1,16 @@
+.active{
+    color: #FFD700;
+}
+
+.inactive{
+    color: black;
+}
+
+.start-rating{
+    margin-top: 5rem;
+    margin-bottom: 5rem;
+    display: flex;
+    gap: 0.5rem;
+    font-size: 2rem;
+    justify-content: center;
+}
