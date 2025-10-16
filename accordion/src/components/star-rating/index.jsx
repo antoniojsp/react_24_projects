@@ -19,7 +19,7 @@ export default function StarRating({ numStars = 5 }) {
     const starsAray = [...Array(numStars)];
 
     return (
-        <div className="start-rating">
+        <div className="star-rating">
             {
                 starsAray.map(
                     (_, index) => {
