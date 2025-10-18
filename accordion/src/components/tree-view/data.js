@@ -18,6 +18,16 @@ export const menus = [
               {
                 label: "City",
                 to: "city",
+                children: [
+                  {
+                    label: "Lima",
+                    to: "Lima",
+                  },
+                  {
+                  label: "Eugene",
+                  to: "Eugene}"
+                  }
+                ]
               },
             ],
           },
@@ -44,11 +54,11 @@ export const menus = [
           {
             label: "Register",
             to: "register",
-            children : [
-                {
-                    label : 'Random data',
-                    to : ''
-                }
+            children: [
+              {
+                label: 'Random data',
+                to: ''
+              }
             ]
           },
         ],
