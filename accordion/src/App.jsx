@@ -9,6 +9,7 @@ import QRcode from "./components/qr-code"
 import LightDarkTheme from "./components/light-dark"
 //data
 import data from "./components/tree-view/data"
+import ScrollIndicator from "./components/scroll-indicator"
 function App() {
   return (
     <div className="App">
@@ -18,8 +19,9 @@ function App() {
       <ImageSlider url={"https://picsum.photos/v2/list"} page={1} limit={10} />
       <LoadMoreData />
       <TreeView list={data}/>
-      <QRcode /> */}
-      <LightDarkTheme />
+      <QRcode />
+      <LightDarkTheme /> */}
+      <ScrollIndicator url={"https://dummyjson.com/products?limit=100"} />
     </div>
   )
 }
