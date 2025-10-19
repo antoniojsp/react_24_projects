@@ -1,0 +1,37 @@
+.container-qr{
+    display:block;
+    align-items: center;
+    margin-bottom: 40px;
+    min-height: 100vh;
+}
+
+.container-qr h1{
+    text-align: center;
+    margin-bottom: 50px;
+    margin-top: 100px;
+}
+
+.qr-elements{
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 30px
+}
+
+.qr-result{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+
+
+.container-qr button{
+     margin-bottom: 120px;
+     border-radius: 10px;
+     padding: 10px;
+     border-width: 0.1px;
+}
