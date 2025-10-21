@@ -1,20 +1,22 @@
-export default function Modal({id, header, body, footer}){
 
-    return(
+export default function Modal({ id, header, body, footer, closeModal }) {
+
+
+    return (
         <div id={id || "Modal"} className="modal">
-            <div className="model-content">
+            <div className="modal-content">
                 <div className="header">
-                    <span className="close-modal-icon"> &times; </span>
-                    <h2>{header ? header:"Header"}</h2>
+                    <span className="close-modal-icon" onClick={closeModal}> &times; </span>
+                    <h2>{header ? header : "Header"}</h2>
                 </div>
                 <div className="body">
-                    { body ? body: <div>
+                    {body ? body : <div>
                         <p>This is our body</p>
-                        </div>
+                    </div>
                     }
                 </div>
                 <div className="footer">
-                   { footer ?  footer: <h2>
+                    {footer ? footer : <h2>
                         This is Our footer
                     </h2>
                     }

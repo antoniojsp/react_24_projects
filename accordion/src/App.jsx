@@ -13,6 +13,8 @@ import ModalTest from "./components/custom-modal-popup/modal-test"
 //data
 import data from "./components/tree-view/data"
 import TabTest from "./components/custom-tabs/tab-test"
+//css
+import "./App.css";
 
 function App() {
   return (
