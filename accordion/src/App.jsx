@@ -7,9 +7,13 @@ import LoadMoreData from "./components/load-more-data"
 import TreeView from "./components/tree-view"
 import QRcode from "./components/qr-code"
 import LightDarkTheme from "./components/light-dark"
+import ScrollIndicator from "./components/scroll-indicator"
+import CustomTabs from "./components/custom-tabs/tabs"
+import ModalTest from "./components/custom-modal-popup/modal-test"
 //data
 import data from "./components/tree-view/data"
-import ScrollIndicator from "./components/scroll-indicator"
+import TabTest from "./components/custom-tabs/tab-test"
+
 function App() {
   return (
     <div className="App">
@@ -20,8 +24,10 @@ function App() {
       <LoadMoreData />
       <TreeView list={data}/>
       <QRcode />
-      <LightDarkTheme /> */}
+      <LightDarkTheme />
       <ScrollIndicator url={"https://dummyjson.com/products?limit=100"} />
+      <TabTest/> */}
+      <ModalTest />
     </div>
   )
 }
