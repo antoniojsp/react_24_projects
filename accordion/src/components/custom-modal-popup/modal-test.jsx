@@ -2,6 +2,8 @@ import { useState } from "react"
 import Modal from "./modal";
 import "./modal.css"
 
+
+
 export default function ModalTest() {
 
     const [showModal, setShowModal] = useState(false);
@@ -15,9 +17,9 @@ export default function ModalTest() {
     }
 
     return (<div>
-        <button onClick={handleModal}>Show Modal</button>
+        <button onClick={handleModal} style={{margin:"30px"}}>Show Modal</button>
         {
-            showModal ? <Modal 
+            showModal ? <Modal  
                             body={<div>Customized body</div>} 
                             closeModal={closeModal}
                             header={<h1>New Header</h1>}
