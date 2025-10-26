@@ -14,6 +14,7 @@ import GithubProfileFinder from "./components/github-profile-finder"
 //data
 import data from "./components/tree-view/data"
 import TabTest from "./components/custom-tabs/tab-test"
+import SearchAutoComplete from "./components/search-autocomplete"
 //css
 import "./App.css";
 
@@ -29,9 +30,11 @@ function App() {
       <QRcode />
       <LightDarkTheme />
       <ScrollIndicator url={"https://dummyjson.com/products?limit=100"} />
-      <TabTest/> */}
-      {/* <ModalTest /> */}
-      <GithubProfileFinder/>
+      <TabTest/>
+      <ModalTest />
+      <GithubProfileFinder/> */}
+      <SearchAutoComplete />
+
     </div>
   )
 }
