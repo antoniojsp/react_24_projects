@@ -11,10 +11,10 @@ import ScrollIndicator from "./components/scroll-indicator"
 import CustomTabs from "./components/custom-tabs/tabs"
 import ModalTest from "./components/custom-modal-popup/modal-test"
 import GithubProfileFinder from "./components/github-profile-finder"
+import SearchAutoComplete from "./components/search-autocomplete"
 //data
 import data from "./components/tree-view/data"
 import TabTest from "./components/custom-tabs/tab-test"
-import SearchAutoComplete from "./components/search-autocomplete"
 //css
 import "./App.css";
 

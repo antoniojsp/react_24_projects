@@ -7,6 +7,7 @@ export default function SearchAutoComplete() {
     const [currSearch, setCurrUsers] = useState([]); // 
     const [showSuggestion, setShowSuggestions] = useState(false);
     const [searchParameter, setSearchParameter] = useState("");
+    const  [selectedUser, setSelectedUser] = useState(null)
 
     async function getUsers() {
         try {
@@ -15,15 +16,22 @@ export default function SearchAutoComplete() {
             const data = await response.json()
             if (data && data.users.length > 0) {
                 const userNames = data.users.map(
-                    x => x.username
+                    x => [x.username, x.university]
                 )
                 setUsers(userNames)
-                setLoading(false)
             }
         } catch (error) {
             console.log(error)
+        }finally{
             setLoading(false)
         }
+    }
+
+    function searchId(){
+        // console.log(users)
+        const result = users.findIndex(x => x[0] === selectedUser)
+        console.log("here", result, users[result][1]);
+        return users[result][1];
     }
 
     useEffect(() => { 
@@ -32,7 +40,10 @@ export default function SearchAutoComplete() {
 
     function handleSearch(value) {
         setSearchParameter(value)
-        const currentSearch = users.filter(x => x.startsWith(value)).sort()
+        const currentSearch = users.map(x =>{ if (x[0].startsWith(value)) {
+                                                    return x[0];
+                                                 } return}
+                                                ).sort()
         setCurrUsers(currentSearch)
         if(value){ // if value is empty, hides suggestions
             setShowSuggestions(true)
@@ -41,15 +52,23 @@ export default function SearchAutoComplete() {
         }
     }
 
-    function handleOnClick(e){
-        setShowSuggestions(false)
-        setSearchParameter(e.target.innerText)
-        setCurrUsers([])
-    }
+    // function handleOnClick(e){
+    //     setShowSuggestions(false)
+    //     setSearchParameter(e.target.innerText)
+    //     setCurrUsers([])
+    // }
 
     if(loading){
         return <div>Loading.. </div>
     }
+
+    function handleQuery(e){
+        // console.log(e)
+        setSelectedUser(e)  
+    }
+
+    // console.log(users)
+    
 
     return (<div className="search-autocomplete-container">
                 <input
@@ -57,10 +76,22 @@ export default function SearchAutoComplete() {
                     value={searchParameter}
                     placeholder="Search users here..."
                     onChange={e => handleSearch(e.currentTarget.value)}
+                    list="userList"
                 />
+                <button onClick={() => handleQuery(searchParameter)}>Lookup</button>
+                <datalist id="userList">
+                    {currSearch.map((user, index) => (
+                        <option 
+                            key={index} 
+                            value={user}
+                        />
+                    ))}
+                </datalist>
 
-                    {(showSuggestion && currSearch.length > 0) ? 
-                        <Suggestions data={currSearch} handleOnClick={handleOnClick}/>: null}
+                {selectedUser && <p>{searchId(selectedUser)}</p>}
+
+                    {/* {(showSuggestion && currSearch.length > 0) ? 
+                        <Suggestions data={currSearch} handleOnClick={handleOnClick}/>: null} */}
             </div>
     )
 }
