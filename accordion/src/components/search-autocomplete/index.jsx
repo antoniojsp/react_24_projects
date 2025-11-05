@@ -31,12 +31,14 @@ export default function SearchAutoComplete() {
         // console.log(users)
         const result = users.findIndex(x => x[0] === selectedUser)
         console.log("here", result, users[result][1]);
-        return users[result][1];
+        const [name, university] = users[result];
+        return `${name} goes to ${university}`;
     }
 
     useEffect(() => { 
         getUsers(); }
         , [])
+    
 
     function handleSearch(value) {
         setSearchParameter(value)
@@ -58,6 +60,8 @@ export default function SearchAutoComplete() {
     //     setCurrUsers([])
     // }
 
+    console.log(users[34])
+
     if(loading){
         return <div>Loading.. </div>
     }
@@ -78,7 +82,7 @@ export default function SearchAutoComplete() {
                     onChange={e => handleSearch(e.currentTarget.value)}
                     list="userList"
                 />
-                <button onClick={() => handleQuery(searchParameter)}>Lookup</button>
+                <button type="submit" onClick={() => setSelectedUser(searchParameter)}>Lookup</button>
                 <datalist id="userList">
                     {currSearch.map((user, index) => (
                         <option 
