@@ -19,6 +19,8 @@ export default function TicTacToe() {
     const [moves, setMoves] = useState(0);
     const [winnerTurn, setWinnerTurn] = useState("");
     const [gameOver, setGameOver] = useState(false);
+    const [tilesLight, setTilesLight] = useState([]);
+
 
     function CheckGame() {
         const winners = [
@@ -34,14 +36,15 @@ export default function TicTacToe() {
 
         for (const [a, b, c] of winners) {
             if (squares[a] && squares[a] === squares[b] && squares[b] === squares[c]) {
-                return squares[a];
+                setTilesLight(prev => [a,b,c])
+                return [a,b,c];
             }
         }
-        return "";
+        return [];
     }
 
     function handleClick(index) {
-        if (winnerTurn != "") {
+        if (moves == 9) {
             return;
         }
         if (squares[index]) {
@@ -62,7 +65,7 @@ export default function TicTacToe() {
 
     useEffect(() => {
         const result = CheckGame();
-        if (result) {
+        if (result.length > 0) {
             setWinnerTurn(result);
             setGameOver(true);
         }
@@ -72,51 +75,59 @@ export default function TicTacToe() {
 
     }, [squares])
 
+
     const className = clsx({
         "square": winnerTurn == "",
-        "square disable": winnerTurn != "" || gameOver
+        "square disable": winnerTurn != "" || gameOver,
     })
 
     return (
         <div className="tic-tac-toe-container">
             <div className="row">
                 {
-                    squares.map((x, i) => [0, 1, 2].includes(i) ? <Square
+                    squares.map((x, i) => {
+                        const class_name = clsx(className, { light: winnerTurn && tilesLight.includes(i)})
+                        return [0, 1, 2].includes(i) ? <Square
                         key={i}
                         onClick={() => handleClick(i)}
                         val={squares[i]}
-                        className={className}
-                    /> : null
+                        className={class_name}
+                    /> : null}
                     )
                 }
             </div>
             <div className="row">
                 {
-                    squares.map((x, i) => [3, 4, 5].includes(i) ? <Square
+                    squares.map((x, i) => {
+                        const class_name = clsx(className, { light: winnerTurn && tilesLight.includes(i)})
+                        return [3, 4, 5].includes(i) ? <Square
                         key={i}
                         onClick={() => handleClick(i)}
                         val={squares[i]}
-                        className={className}
-
-                    /> : null
+                        className={class_name}
+                    /> : null}
                     )
                 }
             </div>
             <div className="row">
                 {
-                    squares.map((x, i) => [6, 7, 8].includes(i) ? <Square
+                    squares.map((x, i) => {
+                        const class_name = clsx(className, { light: winnerTurn && tilesLight.includes(i)})
+                        return [6,7,8].includes(i) ? <Square
                         key={i}
                         onClick={() => handleClick(i)}
                         val={squares[i]}
-                        className={className}
-
-                    /> : null
+                        className={class_name}
+                    /> : null}
                     )
                 }
             </div>
+            {
+                <div>It's {turn} time!</div>
+            }
 
-            {winnerTurn ? <div className="result">
-                <p>The winner is {winnerTurn}!</p>
+            {winnerTurn && !gameOver ? <div className="result">
+                <p>The winner is {turn === "X" ?"O":"X"}!</p>
             </div>:null}
 
             {gameOver && !winnerTurn ?<div className="result">
