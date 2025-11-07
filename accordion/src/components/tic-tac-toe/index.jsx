@@ -1,12 +1,12 @@
 import "./styles.css"
 import { useEffect, useState } from "react"
+import clsx from "clsx"
 
-function Square({ val, onClick, disabled }) {
+function Square({ val, onClick, className }) {
     return (
         <button
             onClick={onClick}
-            className="square"
-            disabled={disabled}
+            className={className}
         >
             {val}
         </button>
@@ -14,9 +14,11 @@ function Square({ val, onClick, disabled }) {
 }
 
 export default function TicTacToe() {
-
-    const [squares, setSquares] = useState([...Array(9)].map(() => ''))
-    const [turn, setTurn] = useState("X")
+    const [squares, setSquares] = useState([...Array(9)].map(() => ''));
+    const [turn, setTurn] = useState("X");
+    const [moves, setMoves] = useState(0);
+    const [winnerTurn, setWinnerTurn] = useState("");
+    const [gameOver, setGameOver] = useState(false);
 
     function CheckGame() {
         const winners = [
@@ -28,18 +30,52 @@ export default function TicTacToe() {
             [2, 5, 8],
             [0, 4, 8],
             [2, 4, 6]
-        ]
+        ];
 
-        for ()
+        for (const [a, b, c] of winners) {
+            if (squares[a] && squares[a] === squares[b] && squares[b] === squares[c]) {
+                return squares[a];
+            }
+        }
+        return "";
     }
 
     function handleClick(index) {
+        if (winnerTurn != "") {
+            return;
+        }
+        if (squares[index]) {
+            return;
+        }
+        setMoves(prev => prev + 1)
         setSquares(prev => prev.map((x, i) => i === index ? turn : x));
         setTurn(x => x === "X" ? "O" : "X")
     }
-    useEffect(x => {
-        console.log(squares)
+
+    function resetBoard(){
+        setSquares(prev => prev.map(() => ""));
+        setWinnerTurn("");
+        setGameOver(false);
+        setMoves(0)
+        setTurn("X")
+    }
+
+    useEffect(() => {
+        const result = CheckGame();
+        if (result) {
+            setWinnerTurn(result);
+            setGameOver(true);
+        }
+        else if(moves == 9){
+            setGameOver(true);
+        }
+
     }, [squares])
+
+    const className = clsx({
+        "square": winnerTurn == "",
+        "square disable": winnerTurn != "" || gameOver
+    })
 
     return (
         <div className="tic-tac-toe-container">
@@ -49,7 +85,7 @@ export default function TicTacToe() {
                         key={i}
                         onClick={() => handleClick(i)}
                         val={squares[i]}
-                        disabled={squares[i] != ""}
+                        className={className}
                     /> : null
                     )
                 }
@@ -60,7 +96,8 @@ export default function TicTacToe() {
                         key={i}
                         onClick={() => handleClick(i)}
                         val={squares[i]}
-                        disabled={squares[i] != ""}
+                        className={className}
+
                     /> : null
                     )
                 }
@@ -71,12 +108,25 @@ export default function TicTacToe() {
                         key={i}
                         onClick={() => handleClick(i)}
                         val={squares[i]}
-                        disabled={squares[i] != ""}
+                        className={className}
+
                     /> : null
                     )
                 }
             </div>
 
+            {winnerTurn ? <div className="result">
+                <p>The winner is {winnerTurn}!</p>
+            </div>:null}
+
+            {gameOver && !winnerTurn ?<div className="result">
+                <p>The game is a Tie</p>
+            </div>:null}
+            
+            {(gameOver || winnerTurn) && <div className="result">
+                <p>Wanna play again? </p>
+                <button onClick={resetBoard}>Yes</button>
+            </div>}
         </div>
     )
 }
