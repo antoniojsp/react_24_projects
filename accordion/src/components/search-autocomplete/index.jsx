@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import Suggestions from "./Suggestion";
+import "./styles.css"
 
 export default function SearchAutoComplete() {
     const [loading, setLoading] = useState(false);
@@ -54,26 +55,13 @@ export default function SearchAutoComplete() {
         }
     }
 
-    // function handleOnClick(e){
-    //     setShowSuggestions(false)
-    //     setSearchParameter(e.target.innerText)
-    //     setCurrUsers([])
-    // }
 
     console.log(users[34])
 
     if(loading){
         return <div>Loading.. </div>
     }
-
-    function handleQuery(e){
-        // console.log(e)
-        setSelectedUser(e)  
-    }
-
-    // console.log(users)
     
-
     return (<div className="search-autocomplete-container">
                 <input
                     name="search-users"

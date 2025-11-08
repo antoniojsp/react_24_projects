@@ -2,6 +2,7 @@
      margin: 0 auto;
      width: 90%;
      max-width: 1000px;
+     height: 100vh;
      padding: 20px;
      border-radius: 8px;
  }
@@ -14,13 +15,12 @@
 }
 
 .input-wrapper input {
-  padding: 12px;
-  font-size: 16px;
+  padding: 12px 20px; /* match vertical padding of input */  font-size: 16px;
   border: none;
 }
 
 .input-wrapper button {
-  padding: 5px 12px;
+  padding: 1px 12px;
   border: none;
   border-radius: 8px;
   background-color: #00f4ec;

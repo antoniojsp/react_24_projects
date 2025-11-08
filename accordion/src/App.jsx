@@ -32,9 +32,9 @@ function App() {
       <LightDarkTheme />
       <ScrollIndicator url={"https://dummyjson.com/products?limit=100"} />
       <TabTest/>
-      <ModalTest />
-      <GithubProfileFinder/> */}
-      {/* <SearchAutoComplete /> */}
+      <ModalTest /> */}
+      <GithubProfileFinder/>
+      <SearchAutoComplete />
       <TicTacToe/>
 
     </div>
