@@ -8,6 +8,9 @@ export default function GithubProfileFinder() {
     const [userData, setUserData] = useState(null);
 
     function handleSubmit() {
+        if(userName.length == 0){
+            return
+        }
         fetchGitHubInfo(userName)
     }
 

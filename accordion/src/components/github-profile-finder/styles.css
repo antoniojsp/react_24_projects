@@ -15,12 +15,14 @@
 }
 
 .input-wrapper input {
-  padding: 12px 20px; /* match vertical padding of input */  font-size: 16px;
+  padding: 0px 10px; /* match vertical padding of input */  
+  font-size: 16px;
   border: none;
+  margin-top:10px;
 }
 
 .input-wrapper button {
-  padding: 1px 12px;
+  padding: 10px 20px;
   border: none;
   border-radius: 8px;
   background-color: #00f4ec;
@@ -45,6 +47,7 @@
     margin-top: 20px;
     display: flex;
     justify-content: center;
+    flex-direction: column;
     gap: 20px;
  }
 

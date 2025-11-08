@@ -1,6 +1,5 @@
-
-.tic-tac-toe-container{
-    clear:both;
+.tic-tac-toe-container {
+    clear: both;
     content: "";
     display: table;
     display: flex;
@@ -8,10 +7,11 @@
     height: 100vh;
     align-items: center;
     justify-content: center;
-background-image: linear-gradient(to right, red , yellow);}
+    background-image: linear-gradient(to right, red, yellow);
+}
 
-.square{
-    border:2px solid black;
+.square {
+    border: 2px solid black;
     float: left;
     font-size: 40px;
     height: 100px;
@@ -22,10 +22,10 @@ background-image: linear-gradient(to right, red , yellow);}
     margin-top: -1px;
 }
 
-.disable{
+.disable {
     pointer-events: none;
 }
 
-.light{
+.light {
     background: #FFFF00;
 }
