@@ -8,7 +8,7 @@ export default function SearchAutoComplete() {
     const [currSearch, setCurrUsers] = useState([]); // 
     const [showSuggestion, setShowSuggestions] = useState(false);
     const [searchParameter, setSearchParameter] = useState("");
-    const  [selectedUser, setSelectedUser] = useState(null)
+    const [selectedUser, setSelectedUser] = useState(null)
 
     async function getUsers() {
         try {
@@ -23,12 +23,12 @@ export default function SearchAutoComplete() {
             }
         } catch (error) {
             console.log(error)
-        }finally{
+        } finally {
             setLoading(false)
         }
     }
 
-    function searchId(){
+    function searchId() {
         // console.log(users)
         const result = users.findIndex(x => x[0] === selectedUser)
         console.log("here", result, users[result][1]);
@@ -36,54 +36,55 @@ export default function SearchAutoComplete() {
         return `${name} goes to ${university}`;
     }
 
-    useEffect(() => { 
-        getUsers(); }
+    useEffect(() => {
+        getUsers();
+    }
         , [])
-    
+
 
     function handleSearch(value) {
         setSearchParameter(value)
-        const currentSearch = users.map(x =>{ if (x[0].startsWith(value)) {
-                                                    return x[0];
-                                                 } return}
-                                                ).sort()
+        const currentSearch = users.map(x => {
+            if (x[0].startsWith(value)) {
+                return x[0];
+            } return
+        }
+        ).sort()
         setCurrUsers(currentSearch)
-        if(value){ // if value is empty, hides suggestions
+        if (value) { // if value is empty, hides suggestions
             setShowSuggestions(true)
-        }else{
+        } else {
             setShowSuggestions(false)
         }
     }
 
 
-    console.log(users[34])
-
-    if(loading){
+    if (loading) {
         return <div>Loading.. </div>
     }
-    
+
     return (<div className="search-autocomplete-container">
-                <input
-                    name="search-users"
-                    value={searchParameter}
-                    placeholder="Search users here..."
-                    onChange={e => handleSearch(e.currentTarget.value)}
-                    list="userList"
+        <input
+            name="search-users"
+            value={searchParameter}
+            placeholder="Search users here..."
+            onChange={e => handleSearch(e.currentTarget.value)}
+            list="userList"
+        />
+        <button type="submit" onClick={() => setSelectedUser(searchParameter)}>Lookup</button>
+        <datalist id="userList">
+            {currSearch.map((user, index) => (
+                <option
+                    key={index}
+                    value={user}
                 />
-                <button type="submit" onClick={() => setSelectedUser(searchParameter)}>Lookup</button>
-                <datalist id="userList">
-                    {currSearch.map((user, index) => (
-                        <option 
-                            key={index} 
-                            value={user}
-                        />
-                    ))}
-                </datalist>
+            ))}
+        </datalist>
 
-                {selectedUser && <p>{searchId(selectedUser)}</p>}
+        {selectedUser && <p>{searchId(selectedUser)}</p>}
 
-                    {/* {(showSuggestion && currSearch.length > 0) ? 
+        {/* {(showSuggestion && currSearch.length > 0) ? 
                         <Suggestions data={currSearch} handleOnClick={handleOnClick}/>: null} */}
-            </div>
+    </div>
     )
 }

@@ -42,20 +42,19 @@ export default function TicTacToe() {
     }
 
     function handleClick(index) {
-        if (isWon || isTie || squares[index] !=="") {
+        if (isWon || isTie || squares[index] !== "") {
             return;
         }
-        setMoves(prev => prev + 1)
+        setTurn(x => x === "X" ? "O" : "X")
         setSquares(prev => prev.map((x, i) => i === index ? turn : x));
     }
 
     function resetBoard() {
         setSquares(Array(9).fill(""));
-        setMoves(0);
         setTurn("X");// start with X
-        setIsTie(false);
-        setIsWon(false);
-        setWinner(null)
+        setIsTie(() => false);
+        setIsWon(() => false);
+        setWinner(() => null);
     }
 
     useEffect(() => {
@@ -63,14 +62,11 @@ export default function TicTacToe() {
         if (result) {
             setTilesLight(result)
             setIsWon(true)
-            setWinner(turn)
+            setWinner(turn === "X"?"O":"X")
         }
         else if (squares.filter(x => x !== "").length === 9) {
             setIsTie(true);
-        } else {
-            setTurn(x => x === "X" ? "O" : "X")
         }
-
     }, [squares])
 
     return (
@@ -84,22 +80,24 @@ export default function TicTacToe() {
             }
 
             {[0, 3, 6].map((start) => {
-                    return <div className="row" key={start}>
-                        {
-                            [start, start + 1, start + 2].map(x => {
-                                const class_name = clsx("square", 
-                                                        {light: isWon && tilesLight.includes(x), 
-                                                         disable: isWon || isTie || squares[x]})
-                                return <Square
-                                    key={x}
-                                    onClick={() => handleClick(x)}
-                                    val={squares[x]}
-                                    className={class_name}
-                                />
-                            })
-                        }
-                    </div>
-                })
+                return <div className="row" key={start}>
+                    {
+                        [start, start + 1, start + 2].map(x => {
+                            const class_name = clsx("square",
+                                {
+                                    light: isWon && tilesLight.includes(x),
+                                    disable: isWon || isTie || squares[x]
+                                })
+                            return <Square
+                                key={x}
+                                onClick={() => handleClick(x)}
+                                val={squares[x]}
+                                className={class_name}
+                            />
+                        })
+                    }
+                </div>
+            })
             }
 
             {isWon ?
