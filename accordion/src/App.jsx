@@ -13,11 +13,13 @@ import ModalTest from "./components/custom-modal-popup/modal-test"
 import GithubProfileFinder from "./components/github-profile-finder"
 import SearchAutoComplete from "./components/search-autocomplete"
 import TicTacToe from "./components/tic-tac-toe"
+import FeatureFlagGlobalState from "./components/feature-flag/context"
 //data
 import data from "./components/tree-view/data"
 import TabTest from "./components/custom-tabs/tab-test"
 //css
 import "./App.css";
+import FeatureFlags from "./components/feature-flag"
 
 function App() {
   return (
@@ -33,9 +35,12 @@ function App() {
       <ScrollIndicator url={"https://dummyjson.com/products?limit=100"} />
       <TabTest/>
       <ModalTest /> */}
-      <GithubProfileFinder/>
-      <SearchAutoComplete />
-      <TicTacToe/>
+      {/* <GithubProfileFinder/> */}
+      {/* <SearchAutoComplete /> */}
+      {/* <TicTacToe/> */}
+        <FeatureFlagGlobalState>
+          <FeatureFlags/>
+        </FeatureFlagGlobalState>
 
     </div>
   )
