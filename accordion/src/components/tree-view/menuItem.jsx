@@ -3,7 +3,6 @@ import { useState } from "react"
 import { FaMinus, FaPlus } from "react-icons/fa"
 
 export default function MenuItem({ item }){  
-    console.log(item)
     const [displayCurrChildren, setDisplayCurrChildren] = useState({})
 
     function handleToggleChildren(level){        

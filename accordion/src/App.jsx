@@ -36,8 +36,8 @@ function App() {
       <TabTest/>
       <ModalTest /> */}
       {/* <GithubProfileFinder/> */}
-      {/* <SearchAutoComplete /> */}
-      {/* <TicTacToe/> */}
+      {/* <SearchAutoComplete />
+      <TicTacToe/> */}
         <FeatureFlagGlobalState>
           <FeatureFlags/>
         </FeatureFlagGlobalState>

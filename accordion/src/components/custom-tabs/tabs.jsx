@@ -1,9 +1,8 @@
 import { useState } from "react"
-// import "./tabs.css"
+import "./tabs.css"
 
 export default function Tabs({tabsContent, onChange}){
-
-    console.log(tabsContent)
+    // console.log(tabsContent)
     const [currentTabIndex, setCurrentTabIndex] = useState(0);
 
     function handleChangeTabs(index){
