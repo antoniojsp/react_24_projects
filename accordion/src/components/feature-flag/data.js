@@ -1,10 +1,10 @@
 const dummyApiResponse = {
-  showLightAndDarkMode: true,
-  showTicTacToeBoard: true,
-  showRandomColorGenerator: true,
-  showAccordian: true,
+  showLightAndDarkMode: false,
+  showTicTacToeBoard: false,
+  showRandomColorGenerator: false,
+  showAccordian: false,
   showTreeView: true,
-  showTabs : true
+  showTabs : false
 };
 
 export default function featureFlagsDataServiceCall() {

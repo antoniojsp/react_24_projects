@@ -1,23 +1,23 @@
-import data from "./data"
-import { useEffect, useState } from "react";
+import info from "./data"
+import { useState } from "react";
 import "./styles.css"
+
 export default function Accordian() {
 
     const [selected, setSelected] = useState(null);
     const [enableMultiSelection, setEnableMultiSelected] = useState(false);
     const [multiple, setMultiple] = useState([]);
+    const data = info();
 
     function handleSingleSlection(getCurrentId) {
         setSelected(prev => prev === getCurrentId ? null : getCurrentId);
-    }
+    };
 
     function handleMultiSelection(getCurrentId) {
         setMultiple(prev =>
             prev.includes(getCurrentId) ? prev.filter(x => !(x === getCurrentId)) : [...prev, getCurrentId]
         )
-    }
-
-    useEffect(() => console.log(multiple), [multiple]);
+    };
 
     return (
         <div className="wrapper">
@@ -45,9 +45,8 @@ export default function Accordian() {
                             </div>
                         })
                         :
-
                         (<div>No data Found</div>)
-                }
+                };
             </div>
         </div>
     );

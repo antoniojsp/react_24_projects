@@ -13,7 +13,7 @@ export default function FeatureFlagGlobalState({ children }) {
             const response = await featureFlagsDataServiceCall();
             setEnableFlags(response)
         } catch (error) {
-            throw new Error(error);
+            throw  error;
         }finally{
             setLoading(false);
         }

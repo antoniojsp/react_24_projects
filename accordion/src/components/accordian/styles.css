@@ -19,6 +19,7 @@
 
 .accordian{
   width:500px;
+  color:white;
 }
 
 .item{
@@ -38,5 +39,8 @@
 .content{
   color:#ffffff;
   height:auto;
+}
 
+.answer{
+  padding: 5px;
 }

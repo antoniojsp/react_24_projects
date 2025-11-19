@@ -1,6 +1,6 @@
 // componenets import
 import Accordian from "./components/accordian"
-import RandomColor from "./components/random-folder"
+import RandomColor from "./components/random-color"
 import StarRating from "./components/star-rating"
 import ImageSlider from "./components/image-slider"
 import LoadMoreData from "./components/load-more-data"
@@ -13,7 +13,7 @@ import ModalTest from "./components/custom-modal-popup/modal-test"
 import GithubProfileFinder from "./components/github-profile-finder"
 import SearchAutoComplete from "./components/search-autocomplete"
 import TicTacToe from "./components/tic-tac-toe"
-import FeatureFlagGlobalState from "./components/feature-flag/context"
+import FeatureFlagGlobal from "./components/feature-flag/context"
 //data
 import data from "./components/tree-view/data"
 import TabTest from "./components/custom-tabs/tab-test"
@@ -38,9 +38,9 @@ function App() {
       {/* <GithubProfileFinder/> */}
       {/* <SearchAutoComplete />
       <TicTacToe/> */}
-        <FeatureFlagGlobalState>
+      {/* <FeatureFlagGlobal>
           <FeatureFlags/>
-        </FeatureFlagGlobalState>
+        </FeatureFlagGlobal> */}
 
     </div>
   )

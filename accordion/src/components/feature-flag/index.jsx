@@ -1,6 +1,6 @@
 import LightDarkTheme from "../light-dark"
 import TicTacToe from "../tic-tac-toe"
-import RandomColor from "../random-folder"
+import RandomColor from "../random-color"
 import Accordian from "../accordian"
 import TreeView from "../tree-view"
 import TabTest from "../custom-tabs/tab-test"
@@ -30,7 +30,7 @@ export default function FeatureFlags() {
         },
         {
             key: 'showTreeView',
-            component: <TreeView list={data}/>
+            component: <TreeView list={data} />
         },
         {
             key: 'showTabs',
@@ -46,7 +46,9 @@ export default function FeatureFlags() {
         <h1>Feature Flags</h1>
         {
             componentsToRender.map(
-                (item ) =>  enabledFlags[item.key]?item.component:null
+                (item, index) => {
+                    return <div key={index}> {enabledFlags[item.key] ? item.component : null} </div>
+                }
             )
         }
     </div>)
