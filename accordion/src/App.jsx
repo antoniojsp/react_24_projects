@@ -14,6 +14,8 @@ import GithubProfileFinder from "./components/github-profile-finder"
 import SearchAutoComplete from "./components/search-autocomplete"
 import TicTacToe from "./components/tic-tac-toe"
 import FeatureFlagGlobal from "./components/feature-flag/context"
+import UseFetchHookTest from "./components/use-fetch/testing"
+
 //data
 import data from "./components/tree-view/data"
 import TabTest from "./components/custom-tabs/tab-test"
@@ -41,6 +43,7 @@ function App() {
       {/* <FeatureFlagGlobal>
           <FeatureFlags/>
         </FeatureFlagGlobal> */}
+      <UseFetchHookTest />
 
     </div>
   )
