@@ -15,13 +15,14 @@ import SearchAutoComplete from "./components/search-autocomplete"
 import TicTacToe from "./components/tic-tac-toe"
 import FeatureFlagGlobal from "./components/feature-flag/context"
 import UseFetchHookTest from "./components/use-fetch/testing"
-
+import TestUseOutsideClick from "./components/use-outside-click/test"
+import FeatureFlags from "./components/feature-flag"
+import TestWindowResize from "./components/use-window-resize/testUseWindowResize"
 //data
 import data from "./components/tree-view/data"
 import TabTest from "./components/custom-tabs/tab-test"
 //css
 import "./App.css";
-import FeatureFlags from "./components/feature-flag"
 
 function App() {
   return (
@@ -43,8 +44,9 @@ function App() {
       {/* <FeatureFlagGlobal>
           <FeatureFlags/>
         </FeatureFlagGlobal> */}
-      <UseFetchHookTest />
-
+      {/* <UseFetchHookTest /> */}
+        <TestUseOutsideClick />
+        {/* <TestWindowResize/> */}
     </div>
   )
 }

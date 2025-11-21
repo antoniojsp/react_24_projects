@@ -8,13 +8,12 @@ export default function useFetch(url, options={}){
     async function fetchData() {
         setPending(true)
         try{
-            const response = await fetch(url, {...options});
+            const response = await fetch(url, {...options});//fetching with optional "options"
             if(!response.ok){
                 throw new Error(response.statusText);
             }
 
             const result = await response.json();
-            console.log(result)
             setData(result);
             setError(null);
         }catch(e){
@@ -22,12 +21,12 @@ export default function useFetch(url, options={}){
         }finally{
             setPending(false);
         }
-        
     }
 
-    useEffect(() =>
-        {fetchData()}
-    ,[url])
+    useEffect(() =>{
+        fetchData();
+    }
+    ,[url]) // when url changes
 
     return { data, error, pending };
 }
