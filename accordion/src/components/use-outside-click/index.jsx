@@ -7,7 +7,7 @@ export default function useOutsideClick(ref, handler) {
             if (!ref.current || ref.current.contains(event.target)) {// if ref is not assgied or the event doesnt point to the event
                 return
             }
-            handler(event)
+            handler()
         }
         document.addEventListener("mousedown", listener);
         document.addEventListener("touchstart", listener);
@@ -17,4 +17,4 @@ export default function useOutsideClick(ref, handler) {
         }
 
     }, [handler, ref])
-}
+} 

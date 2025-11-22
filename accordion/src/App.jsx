@@ -18,6 +18,8 @@ import UseFetchHookTest from "./components/use-fetch/testing"
 import TestUseOutsideClick from "./components/use-outside-click/test"
 import FeatureFlags from "./components/feature-flag"
 import TestWindowResize from "./components/use-window-resize/testUseWindowResize"
+import ScrollTopBottom from "./components/scroll-bottom-top"
+
 //data
 import data from "./components/tree-view/data"
 import TabTest from "./components/custom-tabs/tab-test"
@@ -45,8 +47,9 @@ function App() {
           <FeatureFlags/>
         </FeatureFlagGlobal> */}
       {/* <UseFetchHookTest /> */}
-        <TestUseOutsideClick />
+        {/* <TestUseOutsideClick /> */}
         {/* <TestWindowResize/> */}
+        <ScrollTopBottom />
     </div>
   )
 }

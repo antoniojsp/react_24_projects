@@ -4,7 +4,9 @@ import useOutSideClick from ".";
 export default function testUseOutsideClick(){
     const ref = useRef();
     const [showContent, setShowContent] = useState(true);
-    useOutSideClick(ref, ()=>setShowContent(false));
+    useOutSideClick(ref, ()=>{
+                    setShowContent(false)
+                });
 
     return (<div ref ={ref} className="use-outside-click-container">
         {

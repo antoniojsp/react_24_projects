@@ -13,16 +13,16 @@ export default function useWindowresize() {
             prev => ({
                 ...prev,
                 width: window.innerWidth,
-                height: window.innerWidth
+                height: window.innerHeight
             })
         )
     }
 
-    useLayoutEffect(()=>{
-        handlerResize();
-        window.addEventListener('resize', handlerResize);
-        return window.removeEventListener('resize', handlerResize);
-        },[]
+    useLayoutEffect(() => {handlerResize();
+                        window.addEventListener('resize', handlerResize);
+                        return () => window.removeEventListener('resize', handlerResize); // remove listener by not executing right away
+                        },
+        []
     )
 
     return windowSize;
