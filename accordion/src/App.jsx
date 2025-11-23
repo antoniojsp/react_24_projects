@@ -19,6 +19,9 @@ import TestUseOutsideClick from "./components/use-outside-click/test"
 import FeatureFlags from "./components/feature-flag"
 import TestWindowResize from "./components/use-window-resize/testUseWindowResize"
 import ScrollTopBottom from "./components/scroll-bottom-top"
+import ScrollToSection from "./components/scroll-bottom-top/scroll-to-section"
+import WeatherWidget from "./components/weather-widget"
+
 
 //data
 import data from "./components/tree-view/data"
@@ -49,7 +52,9 @@ function App() {
       {/* <UseFetchHookTest /> */}
         {/* <TestUseOutsideClick /> */}
         {/* <TestWindowResize/> */}
-        <ScrollTopBottom />
+        {/* <ScrollTopBottom /> */}
+        {/* <ScrollToSection /> */}
+        <WeatherWidget />
     </div>
   )
 }

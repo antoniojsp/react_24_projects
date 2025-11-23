@@ -1,9 +1,11 @@
+import { useRef } from "react";
 import useFetch from "../use-fetch"
 import "./styles.css"
 export default function ScrollTopBottom() {
 
     const { data, error, pending } = useFetch("https://dummyjson.com/products?limit=100", {})
-    console.log(data)
+    const bottomRef = useRef(null);
+    console.log(data);
 
     function handleScrollTop(){
         window.scrollTo(
@@ -13,7 +15,9 @@ export default function ScrollTopBottom() {
         )
     }
 
-    function handleScrollBottom
+    function handleScrollBottom(){
+        bottomRef.current.scrollIntoView({behavior:"smooth"});
+    }
 
     if(error){
         return <div>Please, try again.</div>
@@ -21,20 +25,20 @@ export default function ScrollTopBottom() {
     if(pending){
         return <div>Wait...</div>
     }
-    return (<div>
+    return (<div className="container-scroll-top-bottom">
         <h1>List of Products</h1>
         <h3>Top section</h3>
-        <button>Scroll Bottom</button>
+        <button onClick={handleScrollBottom}>Scroll Bottom</button>
         <ul>
             {
                 (data && data.products && data.products.length) ?
                     data.products.map((item, index) =>
                         <li key={index}>{item.title}</li>
                     ) : <div>Luna</div>
-
+ 
             }
         </ul>
-        <button onClick={handleScrollTop}>Scroll Top</button>
+        <button ref={bottomRef} onClick={handleScrollTop}>Scroll Top</button>
 
-    </div>)
+    </div >)
 }
