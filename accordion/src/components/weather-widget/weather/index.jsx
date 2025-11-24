@@ -2,18 +2,19 @@ import Search from "../search";
 import { useEffect, useState } from "react";
 
 export default function Weather() {
-    const [search, setSearch] = useState("Lima");
+    const [search, setSearch] = useState("");
     const [loading, setLoading] = useState(false);
     const [weatherData, setWeatherData] = useState(null);
+    const [temperature, setTemperature] = useState("");
 
     async function fetchData(location) {
         setLoading(true);
         try {
             const response = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${location}&appid=7109e1fbf4942308336c53d368902e3e`);
             const data = await response.json();
-            console.log(data);
             if (data) {
                 setWeatherData(data);
+                setTemperature(kelvinToCelsius(data?.main?.temp));
             }
         } catch (error) {
             console.error("Error fetching weather data:", error);
@@ -21,6 +22,7 @@ export default function Weather() {
             setLoading(false);
         }
     }
+
     const getCurrentDate = new Date().toLocaleDateString("en-US", {
         weekday: "long",
         year: "numeric",
@@ -35,6 +37,22 @@ export default function Weather() {
     useEffect(() => {
         fetchData("Lima");
     }, []);
+
+    function kelvinToCelsius(kelvin) {
+        return `${(kelvin - 273.15).toFixed(0)} °C`;
+    } 
+    function kelvinToFahrenheit(kelvin) {
+        return `${(((kelvin - 273.15) * 9/5) + 32).toFixed(0)} °F`;
+
+    }
+
+    function convertTemp(unit) {
+        if (unit === "c") {
+            setTemperature(kelvinToCelsius(weatherData?.main?.temp));
+        }else if(unit === "f"){
+            setTemperature(kelvinToFahrenheit(weatherData?.main?.temp));
+        }
+    }
 
     return (
         <div className="weather-app">
@@ -58,8 +76,12 @@ export default function Weather() {
                         <span>{getCurrentDate}</span>
                     </div>
                     <div className="temp">
-                        <h1>{weatherData?.main?.temp} K</h1>
+                        <p> <span 
+                                onClick={() =>convertTemp("c")}>
+                                °C</span>  |  <span onClick={() =>convertTemp("f")}>°F</span></p>
+                        <h1>{temperature}</h1>
                     </div>
+
                     <div className="weather-condition">
                         <span>{weatherData?.weather[0]?.main}</span>
                     </div>
@@ -67,12 +89,12 @@ export default function Weather() {
 
                     <div className="weather-info">
                         <div className="wind">
-                            <p>Wind Speed</p>
                             <p> {weatherData?.wind?.speed} m/s</p>
+                            <p>Wind Speed</p>
                         </div>
                         <div className="humidity">
-                            <p>Humidity</p> 
                             <p>{weatherData?.main?.humidity} %</p>
+                            <p>Humidity</p> 
                         </div>
                     </div>
                 </div>):<div>
