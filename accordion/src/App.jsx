@@ -53,7 +53,7 @@ function App() {
         {/* <TestWindowResize/> */}
         {/* <ScrollTopBottom /> */}
         {/* <ScrollToSection /> */}
-        <WeatherWidget />
+        {/* <WeatherWidget /> */}
     </div>
   )
 }
